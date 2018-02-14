@@ -1,0 +1,30 @@
+/**
+ * 1.截取拦截事件：
+ * eg：
+ * $('.article_hotcmnt .on').click(function() {
+ * window.location.href = 'like:'+$(this).attr('comment_id')+'_'+2;
+ * });
+ * if（url.startWith("like")）{
+ * <p>
+ * }
+ * <p>
+ * 2.调用html中的方法
+ * wvDetail.loadUrl("javascript:app()");//JS代码要是带参数
+ * 3.
+ * 获取html的内容
+ * webView.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
+ * eg：
+ * final class InJavaScriptLocalObj {
+ *
+ * @JavascriptInterface public void getTitle(String title) {
+ * if (!TextUtils.isEmpty(title)) {
+ * postTitle = title;
+ * }
+ * }
+ * @JavascriptInterface public void getImages(String picurl) {
+ * picList.add(picurl);
+ * }
+ * 在onPageFinish中调用：
+ * webView.loadUrl("javascript:window.local_obj.getTitle(document.getElementsByTagName('h1')[0].innerText);");
+ * webView.loadUrl("javascript:$('.article_main img').each(function(e){window.local_obj.getImages($(this).attr('src'))});");
+ */
